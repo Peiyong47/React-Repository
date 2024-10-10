@@ -5,7 +5,6 @@ import { fetchRepoRequest, fetchRepoSuccess, fetchRepoFailure } from './repo/rep
 function* fetchRepo() {
     try {
         const response = yield call(axios.get, 'https://api.github.com/orgs/reactjs/repos?per_page=100')
-        // const response = yield call(axios.get, 'https://api.github.com/search/repositories?q=react&sort=stars&order=desc&per_page=10');
         yield put(fetchRepoSuccess(response.data));
     } catch (error) {
         yield put(fetchRepoFailure(error.message));
