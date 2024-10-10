@@ -1,10 +1,17 @@
 import React from 'react'
-import RepoLists from './components/RepoLists'
+import RepoList from './pages/RepoList'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+
 
 export default function App() {
   return (
-    <div>
-      <RepoLists />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/reactjs" element={<RepoList />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

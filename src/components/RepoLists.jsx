@@ -15,60 +15,7 @@ export default function RepoLists() {
   return (
     <div className='text-white '>
           <div className='text-'>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
-          <div>RepoLists</div>
+          
 
     </div>
   )
