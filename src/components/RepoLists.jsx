@@ -5,13 +5,71 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function RepoLists() {
   const dispatch = useDispatch(); 
   const { repositories, loading, error } = useSelector(state => state.repo);
-  console.log('repositories in repolist',repositories);
+
+  console.log('RepoList', repositories);
 
   useEffect(() => {
     dispatch(fetchRepoRequest());
   }, [dispatch]);
 
   return (
-    <div>RepoLists</div>
+    <div className='text-white '>
+          <div className='text-'>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+          <div>RepoLists</div>
+
+    </div>
   )
 }
