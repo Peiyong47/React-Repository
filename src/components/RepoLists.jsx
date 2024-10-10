@@ -10,7 +10,7 @@ export default function RepoLists() {
 
   useEffect(() => {
     dispatch(fetchRepoRequest());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className='text-white '>
