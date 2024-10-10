@@ -6,10 +6,18 @@ function* fetchRepo() {
     let allRepos = [];
     let page = 1;
     let hasMoreRepos = true;
+
+    const token = import.meta.env.VITE_GITHUB_TOKEN;
+    const config = {
+        headers: {
+            Authorization: `token ${token}`,
+        },
+    }
     
     try {
         while(hasMoreRepos) {
-            const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=10&page=${page}`);
+     
+            const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=100&page=${page}`, config);
             if (response.data.length > 0) {
                 allRepos = [...allRepos, ...response.data];
                 page++;
