@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function RepoLists() {
   const dispatch = useDispatch(); 
-  const { repositories, loading, error } = useSelector(state => state.repo);
+  const { repositories, loading, error } = useSelector(state => state.repo.repo);
 
   console.log('RepoList', repositories);
 

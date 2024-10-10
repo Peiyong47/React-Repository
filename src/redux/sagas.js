@@ -16,7 +16,6 @@ function* fetchRepo() {
     
     try {
         while(hasMoreRepos) {
-     
             const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=100&page=${page}`, config);
             if (response.data.length > 0) {
                 allRepos = [...allRepos, ...response.data];

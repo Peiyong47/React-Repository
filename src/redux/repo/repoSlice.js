@@ -26,5 +26,7 @@ const repoSlice = createSlice({
   },
 });
 
+console.log('state:', initialState);
+
 export const { fetchRepoRequest, fetchRepoSuccess, fetchRepoFailure } = repoSlice.actions;
 export default repoSlice.reducer;
