@@ -1,9 +1,12 @@
 import React from 'react'
+import Hero from '../components/Home/Hero'
+import LatestRepo from '../components/Home/LatestRepo'
 
 export default function Home() {
   return (
-    <div className='text-darkBlue'>
-        Hi saying something here
-    </div>
+    <>
+        <Hero />
+        <LatestRepo />
+    </>
   )
 }

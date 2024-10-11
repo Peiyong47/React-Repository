@@ -1,10 +1,11 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
-import { fetchRepoRequest, fetchRepoSuccess, fetchRepoFailure } from './repo/repoSlice';
+import { fetchRepoRequest, fetchRepoSuccess, fetchRepoFailure, clearRepos } from './repo/repoSlice';
 
-function* fetchRepo() {
+function* fetchRepo(action) {
+    console.log('action in sagas', action);
+    const { page = 1, perPage = 10 } = action.payload || {};     
     let allRepos = [];
-    let page = 1;
     let hasMoreRepos = true;
 
     const token = import.meta.env.VITE_GITHUB_TOKEN;
@@ -14,17 +15,35 @@ function* fetchRepo() {
         },
     }
     
+    // Fetch all repos in one api call
+    // let page = 1;
+    // let allRepos = [];
+    // let hasMoreRepos = true;
+    // try {
+    //     while(hasMoreRepos) {
+    //         const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=100&page=${page}&sort=updated`, config);            
+    //         if (response.data.length > 0) {
+    //             allRepos = [...allRepos, ...response.data];
+    //             page++;
+    //         } else {
+    //             hasMoreRepos = false;
+    //         }
+    //     }
+    //     console.log('allRepos', allRepos);
+    //     yield put(fetchRepoSuccess(allRepos));
+    // } catch (error) {
+    //     yield put(fetchRepoFailure(error.message));
+    // }
+
     try {
-        while(hasMoreRepos) {
-            const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=100&page=${page}`, config);
-            if (response.data.length > 0) {
-                allRepos = [...allRepos, ...response.data];
-                page++;
-            } else {
-                hasMoreRepos = false;
-            }
+        const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=${perPage}&page=${page}&sort=updated`, config);
+        if (response.data.length > 0) {
+            allRepos = response.data;
         }
-        console.log('allRepos', allRepos);
+        else {
+            hasMoreRepos = false;
+        }
+        console.log('allRepos in sagas', allRepos);
         yield put(fetchRepoSuccess(allRepos));
     } catch (error) {
         yield put(fetchRepoFailure(error.message));
