@@ -24,6 +24,7 @@ function* fetchRepo() {
                 hasMoreRepos = false;
             }
         }
+        console.log('allRepos', allRepos);
         yield put(fetchRepoSuccess(allRepos));
     } catch (error) {
         yield put(fetchRepoFailure(error.message));

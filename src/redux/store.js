@@ -20,10 +20,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    repo: persistedReducer,
-  },
-  //middleware: [sagaMiddleware],
+  reducer: persistedReducer,
   middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false}).concat(sagaMiddleware),
 });
 
