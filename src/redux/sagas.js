@@ -36,9 +36,10 @@ function* fetchRepo(action) {
     // }
 
     try {
-        const response = yield call(axios.get, `https://api.github.com/orgs/reactjs/repos?per_page=${perPage}&page=${page}&sort=updated`, config);
-        if (response.data.length > 0) {
-            allRepos = response.data;
+        const response = yield call(axios.get, `https://api.github.com/search/repositories?q=+org:reactjs&per_page=${perPage}&page=${page}&sort=updated&order=desc`, config);
+        console.log('response in sagas', response);
+        if (response.data.items.length > 0) {
+            allRepos = response.data.items;
         }
         else {
             hasMoreRepos = false;

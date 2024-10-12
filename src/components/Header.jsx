@@ -6,7 +6,7 @@ import { MdExplore } from 'react-icons/md'
 
 export default function Header() {
   return (
-    <div className=' bg-darkBlue-400  py-3 shadow-lg w-full sticky top-0 left-0 right-0 z-50'>
+    <div className='bg-darkBlue-400 py-2 shadow-lg w-full sticky top-0 left-0 right-0 z-50'>
         <Navbar className='max-w-screen-xl bg-darkBlue-400 mx-auto text-westly-100 '>
             <Navbar.Toggle className='text-westly-100 hover:bg-westly-200 hover:bg-opacity-10' />
             <Link to='/' className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold flex-row text-westly-100'>

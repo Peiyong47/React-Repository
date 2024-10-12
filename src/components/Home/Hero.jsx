@@ -1,19 +1,7 @@
-import React, { useEffect } from 'react'
 import { FaGithub, FaReact } from 'react-icons/fa'
-import { fetchRepoRequest } from '../../redux/repo/repoSlice'
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 export default function Hero() {
-    const dispatch = useDispatch(); 
-    const { repositories, loading, error } = useSelector(state => state.repo);
-  
-    console.log('RepoList', repositories);
-  
-    useEffect(() => {
-      dispatch(fetchRepoRequest());
-    }, [dispatch]);
-  
   return (
     <section className='bg-gradient-to-r from-darkBlue-400 via-westly-600 to-westly '>
         <div className='max-w-6xl mx-auto py-24'>
@@ -31,7 +19,7 @@ export default function Hero() {
                 <Link to='/reactjs' className='px-4 py-2 bg-westly-200 rounded-full text-westly-600 hover:bg-opacity-60 font-semibold w-full sm:max-w-[240px] text-xl'>
                     Explore Repositories
                 </Link>
-                <Link to='https://react.dev/' target='_blank' className='px-4 py-2 bg-transparent border border-westly-200 rounded-full text-westly-200 font-semibold w-full sm:max-w-[240px] text-xl hover:text-opacity-60 hover:border-opacity-60'>
+                <Link to='https://react.dev/' target='_blank' rel='noreferrer' className='px-4 py-2 bg-transparent border border-westly-200 rounded-full text-westly-200 font-semibold w-full sm:max-w-[240px] text-xl hover:text-opacity-60 hover:border-opacity-60'>
                     Learn React
                 </Link>
             </div>
