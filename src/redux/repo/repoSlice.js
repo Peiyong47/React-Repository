@@ -5,21 +5,28 @@ const initialState = {
   loading: false,
   error: null,
   hasMoreRepos: true,
+  totalReposFetch: 0,
+  totalCount: 0,
 };
 
 const repoSlice = createSlice({
-  name: 'repo',
-  initialState,
-  reducers: {
+    name: 'repo',
+    initialState,
+    reducers: {
     fetchRepoRequest: (state) => {
-      state.loading = true;
-      state.error = null;
+        state.loading = true;
+        state.error = null;
     },
     fetchRepoSuccess: (state, action) => {
-      state.repositories = [...state.repositories, ...action.payload];
-      state.loading = false;
-      state.error = null;
-      state.hasMoreRepos = action.payload.length > 0;
+        const { reposFetch, totalRepos } = action.payload;  
+        state.repositories = [...state.repositories, ...reposFetch];  
+        state.loading = false;
+        state.error = null;
+        state.totalReposFetch += reposFetch.length;  
+        state.totalRepos = totalRepos;        
+    
+        // If totalRepos equals totalCount, no more repos to load
+        state.hasMoreRepos = state.totalReposFetch < state.totalRepos;
     },
     fetchRepoFailure: (state, action) => {
       state.loading = false;
@@ -28,11 +35,11 @@ const repoSlice = createSlice({
     clearRepos: (state) => {
         state.repositories = [];
         state.hasMoreRepos = true;
-
+        state.totalReposFetch = 0;     
+        state.totalRepos = 0; 
     }
   },
 });
-
 
 export const { fetchRepoRequest, fetchRepoSuccess, fetchRepoFailure, clearRepos } = repoSlice.actions;
 export default repoSlice.reducer;

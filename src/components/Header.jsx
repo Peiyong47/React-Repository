@@ -1,8 +1,7 @@
-import { Button, Navbar, Tooltip } from 'flowbite-react'
+import { Navbar } from 'flowbite-react'
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { FaHome, FaReact } from 'react-icons/fa'
-import { MdExplore } from 'react-icons/md'
+import { FaReact } from 'react-icons/fa'
 
 export default function Header() {
   return (

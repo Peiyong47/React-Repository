@@ -4,6 +4,7 @@ import { fetchRepoRequest, clearRepos } from '../../redux/repo/repoSlice';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading';
 import Repo from '../Repositories/Repo';
+import Error from '../Error';
 
 export default function LatestRepo() {
     const dispatch = useDispatch(); 
