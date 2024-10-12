@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRepoRequest, clearRepos } from '../../redux/repo/repoSlice';
-import { FaSearch } from 'react-icons/fa';
+import { FaInfoCircle, FaSearch } from 'react-icons/fa';
 import { Button, Spinner } from 'flowbite-react';
 import Repo from './Repo';
 import Loading from '../Loading';
+import { Toaster } from 'react-hot-toast';
 
 export default function RepoLists() {
   const dispatch = useDispatch(); 
-  const { repositories, loading, error, hasMoreRepos } = useSelector(state => state.repo);
+  const { repositories, loading, error, hasMoreRepos, totalRepos } = useSelector(state => state.repo);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -41,7 +42,7 @@ export default function RepoLists() {
       >
         <input 
           type='text' 
-          placeholder='Search Repositories' 
+          placeholder='Search repositories...' 
           className='w-full p-2 border border-westly-200 bg-transparent rounded-lg focus:outline-none focus:border-westly-600'
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -57,8 +58,16 @@ export default function RepoLists() {
       {
         loading && <Loading />
       }
+      {
+        error && <Toaster />
+      }
       {repositories.length > 0 && !error && (
         <>
+          <div className='flex justify-between items-center font-medium'>
+            <span className='inline-block bg-gradient-to-r from-westly to-westly-600 text-white px-4 py-1 rounded-lg shadow-md'>
+              {totalRepos} {totalRepos === 1 ? 'Repository' : 'Repositories'} Found
+            </span>
+          </div>
           {repositories.map((repo) => (
             <Repo key={repo.id} repo={repo} />
           ))}
@@ -73,6 +82,13 @@ export default function RepoLists() {
             </Button>
           )}
         </>
+      )}
+      {
+        repositories.length === 0 && !loading && !error && (
+          <div className='font-medium text-westly-600 flex gap-2 items-center'>
+            <FaInfoCircle className='text-xl flex-shrink-0'/>
+            No repositories found.
+          </div>
       )}
     </div>
   );

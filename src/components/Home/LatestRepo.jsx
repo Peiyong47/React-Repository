@@ -4,7 +4,7 @@ import { fetchRepoRequest, clearRepos } from '../../redux/repo/repoSlice';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading';
 import Repo from '../Repositories/Repo';
-import Error from '../Error';
+import { Toaster } from 'react-hot-toast';
 
 export default function LatestRepo() {
     const dispatch = useDispatch(); 
@@ -18,9 +18,10 @@ export default function LatestRepo() {
     return (
         <div className='max-w-5xl mx-auto px-4 flex flex-col gap-8 mt-12 mb-14'>
         {
-            loading && ( 
-                <Loading />
-            )
+            loading && <Loading />
+        }
+        {
+            error && <Toaster />
         }
         {
             repositories.length > 0 && !loading && !error && (
