@@ -16,7 +16,7 @@ const NotFound = () => {
             </p>
             <div className='flex justify-center gap-4 w-full mt-4 '>
             
-                <Link to='/home' className='text-westly-600 font-bold underline text-xl hover:text-westly'>Go to Home</Link>
+                <Link to='/' className='text-westly-600 font-bold underline text-xl hover:text-westly'>Go to Home</Link>
                 
             </div> 
         </div>
