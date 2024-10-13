@@ -17,7 +17,7 @@ function* fetchRepo(action) {
     }
 
     try {
-        const response = yield call(axios.get, `https://api.github.com/search/repositories?q=${searchTerm}+org:reactjs&per_page=${perPage}&page=${page}&sort=updated&order=desc`, config);
+        const response = yield call(axios.get, `https://api.github.com/search/repositories?q=${searchTerm}+org:reactjs&per_page=${perPage}&page=${page}&sort=updated&order=desc`);
         if (response.data.items.length > 0) {
             reposFetch = response.data.items;
             totalRepos = response.data.total_count;
