@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRepoRequest, clearRepos } from '../../redux/repo/repoSlice';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 import { Button, Spinner } from 'flowbite-react';
 import Repo from './Repo';
 import Loading from '../Loading';
@@ -42,16 +42,16 @@ export default function RepoLists() {
   }
 
   return (
-    <div className='max-w-5xl mx-auto px-4 flex flex-col gap-8 mt-12 mb-14'>
+    <div className='max-w-5xl mx-auto px-4 flex flex-col gap-6 mt-12 mb-14'>
       <h1 className='text-darkBlue-400 font-bold text-2xl'>All Repositories</h1>
       <form 
-        className='flex gap-1'
+        className='flex gap-1 relative'
         onSubmit={handleSubmit}
       >
         <input 
           type='text' 
           placeholder='Search repositories...' 
-          className='w-full p-2 border border-westly-200 bg-transparent rounded-lg focus:outline-none focus:border-westly-600'
+          className='w-full p-2 border border-westly-200 bg-transparent rounded-lg focus:outline-none focus:border-westly-600 '
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           id='searchTerm'
@@ -71,10 +71,20 @@ export default function RepoLists() {
       }
       {repositories.length > 0 && !error && (
         <>
-          <div className='flex justify-between items-center font-medium'>
-            <span className='inline-block bg-gradient-to-r from-westly to-westly-600 text-white px-4 py-1 rounded-lg shadow-md'>
+          <div className='flex justify-between items-center'>
+            <span className='inline-block bg-gradient-to-r from-westly font-medium to-westly-600 text-white px-4 py-1 rounded-lg shadow-md'>
               {totalRepos} {totalRepos === 1 ? 'Repository' : 'Repositories'} Found
             </span>
+            {searchTerm && (
+              <button 
+                type='button' 
+                className='p-2 flex text-westly hover:bg-westly-600 hover:rounded-md hover:bg-opacity-20 items-center gap-1'
+                onClick={clearSearchQuery}
+              >
+                <FaTimes className='flex-shrink-0' />
+                <span className='text-sm'>Clear Search</span>
+              </button>
+            )}
           </div>
           {repositories.map((repo) => (
             <Repo key={repo.id} repo={repo} />

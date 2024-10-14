@@ -16,7 +16,7 @@ export default function LatestRepo() {
     }, [dispatch]);
     
     return (
-        <div className='max-w-5xl mx-auto px-4 flex flex-col gap-8 mt-12 mb-14'>
+        <div className='max-w-5xl mx-auto px-4 flex flex-col gap-7 mt-12 mb-14'>
         {
             loading && <Loading />
         }

@@ -3,7 +3,7 @@ import { FaCodeBranch, FaRegEye, FaStar } from 'react-icons/fa'
 import { FaCodeFork } from 'react-icons/fa6'
 export default function Repo({repo}) {
   return (
-    <div className='flex gap-3 p-4 rounded-xl shadow-lg'>
+    <div className='flex gap-4 p-4 rounded-xl shadow-lg'>
       <span className='flex items-center justify-center w-7 h-7 bg-westly-200 rounded-full p-2'>
         <FaCodeBranch className='text-westly-600' />
       </span>
