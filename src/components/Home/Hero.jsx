@@ -1,12 +1,24 @@
 import { FaGithub, FaReact } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
+import logo_colour from '../../assets/logo_colour.png'
+import { useState } from 'react';
 
 export default function Hero() {
-  return (
+    const [imgError, setImgError] = useState(false)
+    return (
     <section className='bg-gradient-to-r from-darkBlue-400 via-westly-600 to-westly '>
         <div className='max-w-6xl mx-auto py-24'>
             <div className='flex gap-5 flex-col sm:flex-row justify-center items-center text-center sm:text-justify'>
-                <FaReact className='text-8xl md:text-9xl text-[#61DAFB] flex-shrink-0' />
+                {imgError ? (
+                    <FaReact className='text-8xl md:text-9xl text-[#61DAFB] flex-shrink-0' /> 
+                ) : (
+                    <img
+                        src={logo_colour}
+                        className='w-32'
+                        alt='Logo'
+                        onError={() => setImgError(true)}
+                    />
+                )}
                 <div className='flex flex-col gap-4 justify-center'>
                     <span className='text-xl md:text-3xl font-bold text-westly-100'>React Community</span>
                     <div className='flex text-westly-100 gap-2 items-center'>

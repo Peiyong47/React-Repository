@@ -28,7 +28,7 @@ export default function LatestRepo() {
             <>
                 {
                     repositories.map(repo => (
-                        <Repo key={repo.id} repo = {repo} />
+                        <Repo key={repo.id} repo={repo} />
                     ))
                 }
                 <Link to='/reactjs' className='flex justify-center p-2 rounded-lg border border-westly text-westly hover:bg-westly hover:text-westly-100' >

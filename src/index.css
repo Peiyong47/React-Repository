@@ -5,7 +5,6 @@
 
 body {
   background-color: #e1e8f6;
-  /* background: linear-gradient(to bottom, white 0%, #cedfff 100%); */
 }
 
 ::-webkit-scrollbar {
@@ -23,12 +22,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #242424;
-}
-
-
-@layer components {
-	.bg-glass {
-		@apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 
-		hover:bg-gray-600/10 border border-gray-800 text-white;
-	}
 }

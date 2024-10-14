@@ -9,13 +9,6 @@ function* fetchRepo(action) {
     let hasMoreRepos = true;
     let totalRepos = 0;
 
-    const token = import.meta.env.VITE_GITHUB_TOKEN;
-    const config = {
-        headers: {
-            Authorization: `token ${token}`,
-        },
-    }
-
     try {
         const response = yield call(axios.get, `https://api.github.com/search/repositories?q=${searchTerm}+org:reactjs&per_page=${perPage}&page=${page}&sort=updated&order=desc`);
         if (response.data.items.length > 0) {

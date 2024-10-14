@@ -8,10 +8,6 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    fontFamily: {
-      Roboto: ["Roboto", "sans-serif"],
-      Poppins: ['Poppins', "sans-serif"],
-    }, 
     colors:{
       'westly': {
         100: '#EAEBED',

@@ -25,7 +25,7 @@ const repoSlice = createSlice({
         state.totalReposFetch += reposFetch.length;  
         state.totalRepos = totalRepos;        
     
-        // If totalRepos equals totalCount, no more repos to load
+        // If totalReposFetch equals totalRepos, no more repos to load
         state.hasMoreRepos = state.totalReposFetch < state.totalRepos;
     },
     fetchRepoFailure: (state, action) => {

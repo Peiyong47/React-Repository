@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRepoRequest, clearRepos } from '../../redux/repo/repoSlice';
-import { FaInfoCircle, FaSearch } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import { Button, Spinner } from 'flowbite-react';
 import Repo from './Repo';
 import Loading from '../Loading';
 import { Toaster } from 'react-hot-toast';
+import { RiGitRepositoryFill } from 'react-icons/ri';
 
 export default function RepoLists() {
   const dispatch = useDispatch(); 
@@ -25,6 +26,13 @@ export default function RepoLists() {
       dispatch(fetchRepoRequest({ page: nextPage, perPage: 10, searchTerm: searchTerm }));
     }
   };
+
+  const clearSearchQuery = () => {
+    setSearchTerm('');
+    setPage(1);
+    dispatch(clearRepos());
+    dispatch(fetchRepoRequest({page: 1, perPage: 10, searchTerm: ''}));
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -85,9 +93,10 @@ export default function RepoLists() {
       )}
       {
         repositories.length === 0 && !loading && !error && (
-          <div className='font-medium text-westly-600 flex gap-2 items-center'>
-            <FaInfoCircle className='text-xl flex-shrink-0'/>
-            No repositories found.
+          <div className='font-medium text-westly-600 flex flex-col gap-2 items-center justify-center'>
+            <RiGitRepositoryFill className='text-3xl flex-shrink-0'/>
+            <span className='font-semibold text-xl text-center'>No repositories matched your search.</span>
+            <button className='text hover:underline text-westly' onClick={clearSearchQuery}>Try a different search.</button>
           </div>
       )}
     </div>

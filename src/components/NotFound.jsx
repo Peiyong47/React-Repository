@@ -15,9 +15,7 @@ const NotFound = () => {
                 Sorry, the page you are looking for does not exist.
             </p>
             <div className='flex justify-center gap-4 w-full mt-4 '>
-            
                 <Link to='/' className='text-westly-600 font-bold underline text-xl hover:text-westly'>Go to Home</Link>
-                
             </div> 
         </div>
     </>
