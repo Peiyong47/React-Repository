@@ -6,7 +6,7 @@ const initialState = {
   error: null,
   hasMoreRepos: true,
   totalReposFetch: 0,
-  totalCount: 0,
+  totalRepos: 0,
 };
 
 const repoSlice = createSlice({
