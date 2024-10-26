@@ -1,8 +1,14 @@
-# React + Vite
+# React-Repository
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React web application that displays the open source repositories of React Community from GitHub.
 
-Currently, two official plugins are available:
+Tech Stack:
+1. React
+2. Tailwind CSS with Flowbite library: UI components and styling refer link
+3. Redux: Global state management for managing repository data
+4. Redux Saga: Handling API calls
+5. Axios: HTTP requests
+6. React-Router-Dom: Routing within the application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Project is setup using React + Vite.
+
