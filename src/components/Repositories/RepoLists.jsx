@@ -5,7 +5,7 @@ import { FaSearch, FaTimes } from 'react-icons/fa';
 import { Button, Spinner } from 'flowbite-react';
 import Repo from './Repo';
 import Loading from '../Loading';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { RiGitRepositoryFill } from 'react-icons/ri';
 
 export default function RepoLists() {
@@ -16,14 +16,20 @@ export default function RepoLists() {
 
   useEffect(() => {
     dispatch(clearRepos());
-    dispatch(fetchRepoRequest({ page: 1, perPage: 10, searchTerm: '' }));
+    dispatch(fetchRepoRequest({ page: 1, searchTerm: '' }));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error('An error has occurred. Please try again later.');  
+    }
+  }, [error]);
 
   const loadMore = () => {
     if (hasMoreRepos) {
       const nextPage = page + 1;
       setPage(nextPage);
-      dispatch(fetchRepoRequest({ page: nextPage, perPage: 10, searchTerm: searchTerm }));
+      dispatch(fetchRepoRequest({ page: nextPage, searchTerm: searchTerm }));
     }
   };
 
@@ -31,14 +37,14 @@ export default function RepoLists() {
     setSearchTerm('');
     setPage(1);
     dispatch(clearRepos());
-    dispatch(fetchRepoRequest({page: 1, perPage: 10, searchTerm: ''}));
+    dispatch(fetchRepoRequest({page: 1, searchTerm: ''}));
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setPage(1);
     dispatch(clearRepos());
-    dispatch(fetchRepoRequest({page: 1, perPage: 10, searchTerm: searchTerm}));
+    dispatch(fetchRepoRequest({page: 1, searchTerm: searchTerm}));
   }
 
   return (
@@ -93,7 +99,9 @@ export default function RepoLists() {
             <Button 
               type='button'
               onClick={loadMore}
-              className='text-westly border-westly rounded-lg hover:border-westly-600 hover:text-westly-600'>
+              className='text-westly border-westly rounded-lg hover:border-westly-600 hover:text-westly-600'
+              disabled={loading}
+            >
               {
                 loading ? <Spinner size='sm' className='text-westly ' /> : 'Show More'
               }

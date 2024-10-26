@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaCodeBranch, FaRegEye, FaStar } from 'react-icons/fa'
 import { FaCodeFork } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
 export default function Repo({repo}) {
   return (
     <div className='flex gap-4 p-4 rounded-xl shadow-lg'>
@@ -9,9 +10,9 @@ export default function Repo({repo}) {
       </span>
       <div className='flex flex-col gap-1 text-westly-600'>
         <div className='flex flex-col sm:flex-row gap-2'>
-          <a href={repo.html_url} target='_blank' rel='noreferrer' className='font-semibold hover:text-westly-200 hover:underline'>
+          <Link to={repo.html_url} target='_blank' rel='noreferrer' className='font-semibold hover:text-westly-200 hover:underline'>
             {repo.name}
-          </a>
+          </Link>
           <div className='flex flex-wrap items-center gap-2'>
             <div className='bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center gap-1'>
               <FaStar /> {repo.stargazers_count}

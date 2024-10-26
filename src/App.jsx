@@ -13,7 +13,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reactjs" element={<RepoList />} />
+        <Route path="/repositories" element={<RepoList />} />
         <Route path="*" element={<NotFound /> } />
       </Routes>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import { Navbar } from 'flowbite-react'
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo_colour from '../assets/logo_colour.png'
+import NavItem from './NavItem'
 
 export default function Header() {
   return (
@@ -17,24 +18,15 @@ export default function Header() {
             </Link>
             <div className='flex'>
                 <div className='hidden md:flex md:gap-6'>
-                    <NavLink to='/' className={({isActive}) => isActive ? 'font-semibold underline hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md' : 'hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md'}>
-                        Home
-                    </NavLink>
-                    <NavLink to='/reactjs' className={({isActive}) => isActive ? 'font-semibold underline hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md' : 'hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md'}>
-                        Repositories
-                    </NavLink>
+                    <NavItem to='/'>Home</NavItem>
+                    <NavItem to='/repositories'>Repositories</NavItem>
                 </div>
             </div>
-            <Navbar.Collapse className='md:hidden '>
-                <NavLink to='/' className={({isActive}) => isActive ? 'font-semibold underline hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md' : 'hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md'}>
-                    Home
-                </NavLink>
-                <NavLink to='/reactjs' className={({isActive}) => isActive ? 'font-semibold underline hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md' : 'hover:bg-westly-200 p-2 hover:bg-opacity-10 hover:rounded-md'}>
-                    Repositories
-                </NavLink>
+            <Navbar.Collapse className='md:hidden'>
+                <NavItem to='/'>Home</NavItem>
+                <NavItem to='/repositories'>Repositories</NavItem> 
             </Navbar.Collapse>
         </Navbar>
     </div>
-
   )
 }

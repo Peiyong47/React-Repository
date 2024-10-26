@@ -4,7 +4,7 @@ import { fetchRepoRequest, clearRepos } from '../../redux/repo/repoSlice';
 import { Link } from 'react-router-dom';
 import Loading from '../Loading';
 import Repo from '../Repositories/Repo';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function LatestRepo() {
     const dispatch = useDispatch(); 
@@ -12,8 +12,14 @@ export default function LatestRepo() {
     
     useEffect(() => {
         dispatch(clearRepos());
-        dispatch(fetchRepoRequest({page: 1, perPage: 10}));
+        dispatch(fetchRepoRequest({page: 1}));
     }, [dispatch]);
+
+    useEffect(() => {
+        if (error) {
+          toast.error('An error has occurred. Please try again later.');  
+        }
+    }, [error]);
     
     return (
         <div className='max-w-5xl mx-auto px-4 flex flex-col gap-7 mt-12 mb-14'>
@@ -31,10 +37,8 @@ export default function LatestRepo() {
                         <Repo key={repo.id} repo={repo} />
                     ))
                 }
-                <Link to='/reactjs' className='flex justify-center p-2 rounded-lg border border-westly text-westly hover:bg-westly hover:text-westly-100' >
-                    <div className='flex items-center gap-2 font-medium'>
-                        <span>View all repositories</span>
-                    </div>
+                <Link to='/repositories' className='flex font-medium justify-center p-2 rounded-lg border border-westly text-westly hover:bg-westly hover:text-westly-100' >
+                    View all repositories
                 </Link>
             </>
             )
